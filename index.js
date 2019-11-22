@@ -44,6 +44,11 @@ passport.use(strategy);
 
 var app = express();
 app.use(passport.initialize());
+app.use(express.static('public'));
+
+app.get("/", function (req, res) {
+    res.sendFile(process.cwd() + '/public/index.html');
+});
 
 // parse application/x-www-form-urlencoded
 // for easier testing with Postman or plain HTML forms
